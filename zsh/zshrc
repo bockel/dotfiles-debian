@@ -40,3 +40,4 @@ alias optipng='optipng -o7' # always use max optimization
 
 alias encrypt='openssl enc -aes-256-ecb -e -a -salt -in'
 alias decrypt='openssl enc -aes-256-ecb -d -a -salt -in'
+alias curl='curl -L'
