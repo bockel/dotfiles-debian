@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/bockel/documents/workspace/python/clapr/clapr/commands/win/cmd'
+let g:netrw_dirhist_2='/home/bockel/documents/workspace/python/clapr/clapr/readers'
+let g:netrw_dirhist_3='/home/bockel/documents/workspace/python/clapr/filters'
+let g:netrw_dirhist_4='/home/bockel/.config'

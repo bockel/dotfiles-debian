@@ -1,0 +1,14 @@
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[diff]
+	color = true
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[alias]
+	up = "!git fetch --all -p; git merge --ff-only @{u}"
+	compact = gc --prune --aggressive
+	commit = commit -S

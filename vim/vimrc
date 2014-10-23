@@ -1,0 +1,297 @@
+
+set nocompatible
+filetype off
+
+" Enable go if its available
+let godir = "$GOROOT/misc/vim"
+if isdirectory(expand(godir))
+    execute "set rtp+=".godir
+elseif isdirectory("/usr/local/go/bin")
+    set rtp+=/usr/local/go/bin
+endif
+
+" Migrate from pathogen to vundle
+" call pathogen#runtime_append_all_bundles()
+" call pathogen#helptags()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Vundle bundles:
+Bundle 'gmarik/vundle'
+
+Bundle 'altercation/vim-colors-solarized'
+" Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
+Bundle 'docunext/closetag.vim'
+Bundle 'godlygeek/tabular'
+" Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'bingaman/vim-sparkup'
+" Bundle 'kien/ctrlp.vim'
+" Bundle 'nvie/vim-rst-tables'
+
+Bundle 'klen/python-mode'
+Bundle 'davidhalter/jedi-vim'
+
+Bundle 'bockel/potwiki.vim'
+
+" Better VIM restructuredText support
+Bundle 'Rykka/riv.vim'
+" Better VIM markdown support
+Bundle 'tpope/vim-markdown'
+
+" vim-script bundles
+" Bundle 'VOoM'
+" Bundle 'csv.vim'
+Bundle 'abnf'
+Bundle 'n3.vim'
+
+filetype plugin indent on
+
+" The leader character is your own personal modifier key,
+" as g is Vim's modifier key (when compared to vi). The default
+" leader is \, but this is not located standardly on all
+" keyboards and requires a pinky stretch in any case.
+let mapleader = ","
+" Hide buffers when they are abandoned
+" set hidden makes problems with VCSVimdiff, Closing diff is not working right
+set nojoinspaces
+" enable backspace to delete anyting (includes \n) in insert mode
+set backspace=indent,eol,start
+set whichwrap+=<,>,h,l
+set nocompatible
+set number
+set nocursorline
+set modelines=0
+set showmode
+set showcmd
+set autochdir
+
+set scrolloff=5     "start scrolling 5 lines before edge of viewport
+set sidescrolloff=3 " same, but for columns
+
+set autoread " automatically detect changes and re-read the file
+set display=lastline " display as much as possible from the last line
+set encoding=utf-8
+setglobal fileencoding=utf-8
+
+" -----------------------------------------------------------
+" Spell
+" -----------------------------------------------------------
+set nospell
+set spelllang=en
+set spellfile=~/.vim/spell/spf.add
+
+set dictionary+=/usr/share/dict/words
+" set digraph
+
+" -----------------------------------------------------------
+" Bell setup
+" -----------------------------------------------------------
+" No bell or flash wanted
+set noerrorbells
+set novisualbell
+set t_vb=
+
+set list listchars=tab:»·,trail:·
+
+" change the way backslashes are used in search patterns
+set magic
+" begin search at top when EOF reached
+set wrapscan
+" jump to matches during entering the pattern
+set showmatch
+set matchtime=3
+set matchpairs+=<:> " these tokens belong together
+" ...and also during entering the pattern
+set incsearch
+set noedcompatible
+
+" -----------------------------------------------------------
+" Relative Numbering
+" -----------------------------------------------------------
+set rnu
+au BufEnter * :set rnu
+au BufLeave * :set nu
+au WinEnter * :set rnu
+au WinLeave * :set nu
+au InsertEnter * :set nu
+au InsertLeave * :set rnu
+au FocusLost * :set nu
+au FocusGained * :set rnu
+
+" -----------------------------------------------------------
+" Leader mappings
+" -----------------------------------------------------------
+" Use the arrows to something usefull
+map <right> :bn<cr>
+map <left> :bp<cr>
+
+" Tab configuration
+map <leader>tn :tabnew %<cr>
+map <leader>te :tabedit
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+
+
+" -----------------------------------------------------------
+" tabline settings
+" -----------------------------------------------------------
+set showtabline=1
+nmap <leader>t <Esc>:tabnew<CR>
+
+
+" -----------------------------------------------------------
+" highlighting, colors, fonts
+" -----------------------------------------------------------
+
+let g:solarized_termtrans=1
+let g:solarized_termcolors=16
+" let g:solarized_contrast="high"
+" let g:solarized_visibility="high"
+colorscheme solarized
+set background=dark
+
+syntax on
+
+" syn sync minlines=256
+" how many lines to search backward after a jump to check syntax
+" let c_minlines = 200
+" aldo highlight some things in comments
+
+" statusline
+" cf the default statusline: %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+" formatmarkers:
+"   %< truncation point
+"   %n buffer number
+"   %f relative path to file
+"   %m modified flag [+] (modified), [-] (unmodifiable) or nothing
+"   %r readonly flag [RO]
+"   %y filetype [ruby]
+"   %w Preview window flag, text is "[Preview]"
+"   %= split point for left and right justification
+"   %-35. width specification
+"   %l current line number
+"   %L number of lines in buffer
+"   %c current column number
+"   %V current virtual column number (-n), if different from %c
+"   %P percentage through buffer
+"   %) end of width specification
+"set statusline=%<\ %n:%f\ %m%r%y%w%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
+
+" -----------------------------------------------------------
+" Vim Diff
+" -----------------------------------------------------------
+
+"Ignore changes in amount of white space.
+set diffopt+=iwhite
+
+
+" -----------------------------------------------------------
+" System-wide copy-paste
+" -----------------------------------------------------------
+" Yank text to global clipboard
+noremap <leader>y "+y
+noremap <leader>Y "+Y
+noremap <leader>P "+p
+" Set proper indentation for pasting from clipboard
+noremap <leader>p :set paste<CR>:put +<CR>:set nopaste<CR>
+
+
+if has("autocmd") && !exists("autocommands_loaded")
+    let autocommands_loaded = 1
+    au FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
+    au FileType html,xhtml,xml,svg,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
+    " Load sparkup with xml files too
+    au FileType html,xhtml,xml,svg source ~/.vim/bundle/vim-sparkup/ftplugin/html/sparkup.vim
+
+    "au BufWinEnter * let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
+    "au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>72v.\+', -1)
+    " use `xmllint` to format XML markup
+    au FileType xml,svg setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+    " make sure spell added to the toplevel syntax so it can be seen
+    au FileType xml,svg syn spell toplevel
+    au FileType text,rst,markdown,potwiki setlocal spell tw=72
+endif
+
+imap jj <esc>
+command! W write
+command! Q quit
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+map <c-h> <c-w>h
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+
+set ai
+set expandtab
+set sw=4
+set ts=4
+set sts=4
+set autoindent
+" add better handling of lists
+set fo+=ncroq
+" limit the syntax highlighting for long lines to improve performance
+set synmaxcol=100
+" set <leader>ft to fold HTML/XML tags
+" nnoremap <leader>ft Vatzf
+" select last pasted text
+nnoremap <leader>v V`]
+" wrap paragraphs
+nnoremap <leader>q gqip
+
+" Improve up/down movement on wrapped linex
+nnoremap j gj
+nnoremap k gk
+
+map <leader>a= :Tabularize /=
+map <leader>a, :Tabularize /,
+map <leader>a: :Tabularize /:
+map <leader>a:: :Tabularize /:\zs
+
+map <C-o> :NERDTreeToggle<CR>
+
+set cinkeys=0{,0}0),:,0#,!^F,o,O,e
+set cinoptions=>s,e0,n0,f0,{0,}0,^0,:0,=s,l0,g0,hs,ps,ts,+s,c3,C0,(0,u0,w1,\U0,w0,m0,j0,)20,*30
+
+" allow doxygen support in C/C++ files
+let g:load_doxygen_syntax = 1
+
+" customize PotWiki configuration
+let potwiki_home = "$HOME/documents/notes/HomePage.wiki"
+let potwiki_home_dir = "$HOME/documents/notes"
+let potwiki_suffix = ".wiki"
+let potwiki_autowrite = 1
+
+" riv config
+let g:riv_fold_level = -1 " only fold sections; -1 : disable
+let g:riv_auto_format_table = -1 " disable rst auto table formatting
+
+
+" Python config
+let g:pymode_rope = 1
+let g:pymode_rope_completion = 0
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+let g:pymode_lint = 1
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pep257', 'mccabe']
+let g:pymode_lint_on_write = 1
+let g:pymode_lint_ignore = ''
+let g:pymode_virtualenv = 1
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+let g:pymode_syntax_print_as_function = 1
+let g:pymode_folding = 0
+
+" auto close vim when the last buffer is the quickfix buffer
+aug QFClose
+    au!
+    au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+aug END

@@ -1,0 +1,16 @@
+export GOROOT=$HOME/bin/go
+export GOPATH=$HOME/documents/workspace/go
+
+PATH=$PATH:$HOME/bin:$HOME/.local/bin:$HOME/config/bin:$GOROOT/bin
+export PATH
+#export PYTHONPATH=`python -c 'import sys;print ":".join(sys.path[2:])'`
+
+export VISUAL=vim
+export EDITOR=vim
+export XMLLINT_INDENT="    "
+export JYTHONPATH=$PYTHONPATH
+
+export WORK_ON=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=`which python3`
+
+export CHROMIUM_USER_FLAGS="--blacklist-accelerated-compositing --user-agent=\'Mozilla/5.0\'"

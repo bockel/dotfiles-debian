@@ -1,0 +1,53 @@
+# Compiled binaries
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.lo
+*.so
+*.pyc
+*.a
+__pycache__
+
+# Archives
+*.7z
+*.gz
+*.iso
+*.zip
+*.zipx
+*.jar
+*.tar
+*.rar
+*.bz2
+*.tgz
+
+*.log
+*.tmp
+*.swp
+*.bak
+~*
+*~
+%*
+
+*.egg-info
+
+# OxygenXML project
+*.xpr
+# eclipse project
+.project
+.ropeproject
+
+CMakeFiles
+CMakeCache.txt
+
+.DS_Store?
+Thumbs.db
+Icon?
+ehthumbs.db
+
+# Binary image files
+*.png
+*.jpg
+*.jpeg
+*.gif
