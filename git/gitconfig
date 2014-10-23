@@ -12,3 +12,4 @@
 	up = "!git fetch --all -p; git merge --ff-only @{u}"
 	compact = gc --prune --aggressive
 	commit = commit -S
+	clone = clone --recursive

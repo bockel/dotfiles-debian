@@ -37,7 +37,8 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'bockel/potwiki.vim'
 
 " Better VIM restructuredText support
-Bundle 'Rykka/riv.vim'
+" Bundle 'Rykka/clickable.vim'
+" Bundle 'Rykka/riv.vim'
 " Better VIM markdown support
 Bundle 'tpope/vim-markdown'
 

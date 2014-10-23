@@ -13,6 +13,8 @@ ln -f $configdir/tmux/tmux.conf .tmux.conf
 # vim
 ln -f -s $configdir/vim .vim
 ln -f $configdir/vim/vimrc .vimrc
+# install Vundle bundles
+command -v vim && vim +PluginInstall! +qall
 
 # zsh
 ln -f $configdir/zsh/zshenv .zshenv
