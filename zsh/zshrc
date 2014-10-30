@@ -33,7 +33,7 @@ alias df='df -h'
 # alias xm='xmodmap $HOME/.Xmodmap'
 alias bc='bc -l'
 # alias pdf='epdfview'
-alias bibref='java -jar ~/bin/JabRef.jar&'
+# alias bibref='java -jar ~/bin/JabRef.jar&'
 alias optipng='optipng -o7' # always use max optimization
 
 # User specific environment and startup programs

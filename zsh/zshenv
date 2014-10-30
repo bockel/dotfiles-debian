@@ -11,7 +11,7 @@ export XMLLINT_INDENT="    "
 export JYTHONPATH=$PYTHONPATH
 
 export WORK_ON=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=`which python3`
+export VIRTUALENVWRAPPER_PYTHON=`which python`
 
 export CHROMIUM_USER_FLAGS="--blacklist-accelerated-compositing --user-agent=\'Mozilla/5.0\'"
 export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
