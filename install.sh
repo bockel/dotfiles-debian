@@ -23,3 +23,6 @@ command -v vim && vim +PluginInstall! +qall
 ln -f $configdir/zsh/zshenv .zshenv
 ln -f $configdir/zsh/zshrc .zshrc
 ln -f -s $configdir/zsh/oh-my-zsh .oh-my-zsh
+
+# git
+git config --global core.excludesfile $HOME/.gitignore_global
