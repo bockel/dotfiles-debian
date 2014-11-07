@@ -9,6 +9,9 @@ ln -f $configdir/git/gitignore_global .gitignore_global
 
 # tmux
 ln -f $configdir/tmux/tmux.conf .tmux.conf
+# terminator
+mkdir -p .config/terminator
+ln -f $configdir/terminator/config .config/terminator/config
 
 # vim
 ln -f -s $configdir/vim .vim
