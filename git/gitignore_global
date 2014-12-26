@@ -37,6 +37,8 @@ __pycache__
 # eclipse project
 .project
 .ropeproject
+# vim
+.netrwhist
 
 CMakeFiles
 CMakeCache.txt

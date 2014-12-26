@@ -9,7 +9,7 @@
 	status = auto
 	branch = auto
 [alias]
-	up = "!git fetch --all -p; git merge --ff-only @{u}"
+	up = "!git fetch --all --recurse-submodules -p; git merge --ff-only @{u}"
 	compact = gc --prune --aggressive
 	commit = commit -S
 	clone = clone --recursive
